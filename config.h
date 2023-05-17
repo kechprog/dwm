@@ -7,8 +7,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int gappx              = 10;
 static const int usealtbar          = 1;        /* 1 means use non-dwm status bar */
-static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
-static const char *altbarcmd        = "polybar"; /* Alternate bar launch command */
+static const char *altbarclass      = "Eww"; 	/* Alternate bar class name */
+static const char *altbarcmd        = ""; 	/* Alternate bar launch command */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -24,7 +24,7 @@ static const char *colors[][3]      = {
 /* autostart */
 static const char *autocmd[] = {
 	"nitrogen --restore",
-	"~/.config/awesome/scripts/mk_touchpad.sh",
+	//"~/.config/awesome/scripts/mk_touchpad.sh",
 	"picom  -b",
 	"fusuma -d",
 	NULL
@@ -40,7 +40,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -68,20 +68,26 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[]	    = { "st", NULL };
+static const char *termcmd[]	    = { "kitty", NULL };
 static const char *spotlight[]      = { "rofi", "-show", "drun", NULL};
-
 static const char *brightnessup[]   = { "light", "-As", "sysfs/backlight/amdgpu_bl0", "10", NULL};
 static const char *brightnessdown[] = { "light", "-Us", "sysfs/backlight/amdgpu_bl0", "10", NULL};
+static const char *volup[]          = { "pamixer", "-i", "10", NULL};
+static const char *voldown[]        = { "pamixer", "-d", "10", NULL};
+static const char *voltoggle[]      = { "pamixer", "-t"      , NULL};
 
 static Key keys[] = {
-	/* modifier                     key        function          argument */
 
-	/*                                 func keys                                */
+	/*                                                    func keys                                                */
+	/* modifier                     key                                     function        argument               */
 	{ 0,							(unsigned int)XF86XK_MonBrightnessUp,   spawn,          {.v = brightnessup   } },
 	{ 0,							(unsigned int)XF86XK_MonBrightnessDown, spawn,          {.v = brightnessdown } },
+	{ 0,							(unsigned int)XF86XK_AudioRaiseVolume,  spawn,          {.v = volup          } },
+	{ 0,							(unsigned int)XF86XK_AudioLowerVolume,  spawn,          {.v = voldown        } },
+	{ 0,							(unsigned int)XF86XK_AudioMute       ,  spawn,          {.v = voltoggle      } },
 
 	/*                                regular keys                               */
+	/* modifier                     key        function          argument */
 	{ MODKEY,			            XK_Return, spawn,            {.v = termcmd   } },
 	{ MODKEY,			            XK_space,  spawn,            {.v = spotlight } },
 	{ MODKEY,                       XK_b,      togglebar,        {0} },

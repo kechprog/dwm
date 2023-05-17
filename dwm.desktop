@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=dwm
+Comment=Dynamic Window Manager
+Exec=dwm
+TryExec=dwm
+
