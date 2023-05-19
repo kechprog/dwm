@@ -1744,8 +1744,8 @@ spawn(const Arg *arg)
 void
 spawnbar(void)
 {
-	if (*altbarcmd && fork() == 0 && system(altbarcmd) < 0)
-		die("altbarcmd failed");
+	if (! *altbarcmd)
+		system(altbarcmd);
 }
 
 void

@@ -7,7 +7,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int gappx              = 10;
 static const int usealtbar          = 1;        /* 1 means use non-dwm status bar */
-static const char *altbarclass      = "Eww"; 	/* Alternate bar class name */
+static const char *altbarclass      = "eww-bar"; 	/* Alternate bar class name */
 static const char *altbarcmd        = ""; 	/* Alternate bar launch command */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char col_gray1[]       = "#222222";
@@ -23,10 +23,9 @@ static const char *colors[][3]      = {
 
 /* autostart */
 static const char *autocmd[] = {
-	"nitrogen --restore",
-	//"~/.config/awesome/scripts/mk_touchpad.sh",
 	"picom  -b",
 	"fusuma -d",
+	"feh --bg-scale ~/.config/wallpapers/dithedread/ussr_space.png",
 	NULL
 };
 
@@ -68,7 +67,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[]	    = { "kitty", NULL };
+static const char *termcmd[]	    = { "st", NULL };
 static const char *spotlight[]      = { "rofi", "-show", "drun", NULL};
 static const char *brightnessup[]   = { "light", "-As", "sysfs/backlight/amdgpu_bl0", "10", NULL};
 static const char *brightnessdown[] = { "light", "-Us", "sysfs/backlight/amdgpu_bl0", "10", NULL};
